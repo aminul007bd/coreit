@@ -1,4 +1,9 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 
 import { AuthProvider } from "./contexts/AuthContext";
 import Footer from "./components/common/Footer";
@@ -11,12 +16,13 @@ import Register from "./pages/Register";
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/coreit">
         <div className="max-w-screen-xl mx-auto border-2 border-gray-200">
           <Header />
           <main className="flex-grow">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Navigate to="/home" />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgot-password" element={<Forget />} />
               <Route path="/login" element={<Login />} />

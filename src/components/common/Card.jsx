@@ -1,10 +1,17 @@
+import { Box } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
 export default function Card({ children }) {
   return (
-    <div className="border border-gray-300 rounded-lg shadow-sm p-4">
+    <Box
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+      p={4}
+      boxShadow="sm"
+    >
       {children}
-    </div>
+    </Box>
   );
 }
 

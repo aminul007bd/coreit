@@ -1,4 +1,13 @@
-import { Transition } from "@headlessui/react";
+import {
+  Box,
+  Button,
+  Input,
+  Stack,
+  Text,
+  Textarea,
+  VStack,
+} from "@chakra-ui/react";
+
 import { useForm } from "react-hook-form";
 
 export default function Contact() {
@@ -16,48 +25,38 @@ export default function Contact() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10">
-      <h1 className="text-2xl font-bold mb-4">Contact</h1>
-      <Transition
-        show={true}
-        enter="transition-opacity duration-700"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-700"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
-            >
+    <Box maxW="md" mx="auto" mt={10}>
+      <Text as="h1" fontSize="2xl" mb={4}>
+        Contact
+      </Text>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <VStack spacing={4}>
+          <Stack spacing={1} w="full">
+            <Text as="label" htmlFor="name" fontWeight="bold">
               Name
-            </label>
-            <input
+            </Text>
+            <Input
               id="name"
               name="name"
-              type="text"
+              placeholder="Enter your name"
               {...register("name", { required: "Name is required" })}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
             {errors.name && (
-              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+              <Text color="red.500" fontSize="sm">
+                {errors.name.message}
+              </Text>
             )}
-          </div>
+          </Stack>
 
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
+          <Stack spacing={1} w="full">
+            <Text as="label" htmlFor="email" fontWeight="bold">
               Email
-            </label>
-            <input
+            </Text>
+            <Input
               id="email"
               name="email"
               type="email"
+              placeholder="Enter your email"
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -65,45 +64,36 @@ export default function Contact() {
                   message: "Invalid email address",
                 },
               })}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">
+              <Text color="red.500" fontSize="sm">
                 {errors.email.message}
-              </p>
+              </Text>
             )}
-          </div>
+          </Stack>
 
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium text-gray-700"
-            >
+          <Stack spacing={1} w="full">
+            <Text as="label" htmlFor="message" fontWeight="bold">
               Message
-            </label>
-            <textarea
+            </Text>
+            <Textarea
               id="message"
               name="message"
+              placeholder="Enter your message"
               {...register("message", { required: "Message is required" })}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
             {errors.message && (
-              <p className="text-red-500 text-sm mt-1">
+              <Text color="red.500" fontSize="sm">
                 {errors.message.message}
-              </p>
+              </Text>
             )}
-          </div>
+          </Stack>
 
-          <div>
-            <button
-              type="submit"
-              className="inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
-      </Transition>
-    </div>
+          <Button type="submit" colorScheme="blue" w="full">
+            Submit
+          </Button>
+        </VStack>
+      </form>
+    </Box>
   );
 }

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { Box, Button, Input, Stack, Text, VStack } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -14,63 +15,68 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Register</h1>
+    <Box className="flex items-center justify-center min-h-screen bg-gray-100">
+      <Box bg="white" p={8} rounded="md" shadow="md" w="full" maxW="md">
+        <Text as="h1" fontSize="2xl" mb={6} textAlign="center">
+          Register
+        </Text>
         <form onSubmit={handleRegister}>
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2" htmlFor="username">
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              className="w-full px-3 py-2 border rounded"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2" htmlFor="email">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="w-full px-3 py-2 border rounded"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label className="block text-gray-700 mb-2" htmlFor="password">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="w-full px-3 py-2 border rounded"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-          >
-            Register
-          </button>
+          <VStack spacing={4}>
+            <Stack spacing={1} w="full">
+              <Text as="label" htmlFor="username" fontWeight="bold">
+                Username
+              </Text>
+              <Input
+                id="username"
+                name="username"
+                type="text"
+                placeholder="Enter your username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Stack>
+
+            <Stack spacing={1} w="full">
+              <Text as="label" htmlFor="email" fontWeight="bold">
+                Email
+              </Text>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Stack>
+
+            <Stack spacing={1} w="full">
+              <Text as="label" htmlFor="password" fontWeight="bold">
+                Password
+              </Text>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Stack>
+
+            <Button type="submit" colorScheme="blue" w="full">
+              Register
+            </Button>
+          </VStack>
         </form>
-        <div className="mt-4 text-center">
-          <Link to="/login" className="text-blue-600 hover:underline">
-            Back to Login
+        <Text mt={4} textAlign="center">
+          Already have an account?{" "}
+          <Link to="/login" style={{ color: "blue" }}>
+            Login
           </Link>
-        </div>
-      </div>
-    </div>
+        </Text>
+      </Box>
+    </Box>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Menu, MenuButton } from "@headlessui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
 import PropTypes from "prop-types";
 
@@ -7,28 +7,18 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
 
   return (
     <nav className="flex justify-center">
-      <ul className="inline-flex items-center -space-x-px">
+      <ButtonGroup isAttached>
         {pages.map((page) => (
-          <li key={page}>
-            <Menu>
-              {({ open }) => (
-                <>
-                  <MenuButton
-                    onClick={() => onPageChange(page)}
-                    className={`px-3 py-2 leading-tight ${
-                      page === currentPage
-                        ? "text-blue-600 bg-blue-50 border border-blue-300"
-                        : "text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                    }`}
-                  >
-                    {page}
-                  </MenuButton>
-                </>
-              )}
-            </Menu>
-          </li>
+          <Button
+            key={page}
+            onClick={() => onPageChange(page)}
+            colorScheme={page === currentPage ? "blue" : "gray"}
+            variant={page === currentPage ? "solid" : "outline"}
+          >
+            {page}
+          </Button>
         ))}
-      </ul>
+      </ButtonGroup>
     </nav>
   );
 }

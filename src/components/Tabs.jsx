@@ -1,38 +1,25 @@
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 
 import PropTypes from "prop-types";
 
-export default function Tabs({ tabs }) {
+export default function CustomTabs({ tabs }) {
   return (
-    <TabGroup>
-      <TabList className="flex p-1 space-x-1 bg-blue-900/20 rounded-xl">
+    <Tabs variant="soft-rounded" colorScheme="blue">
+      <TabList>
         {tabs.map((tab) => (
-          <Tab
-            key={tab.name}
-            className={({ selected }) =>
-              `w-full py-2.5 text-sm leading-5 font-medium text-blue-700 rounded-lg ${
-                selected
-                  ? "bg-white shadow"
-                  : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
-              }`
-            }
-          >
-            {tab.name}
-          </Tab>
+          <Tab key={tab.name}>{tab.name}</Tab>
         ))}
       </TabList>
-      <TabPanels className="mt-2">
+      <TabPanels>
         {tabs.map((tab) => (
-          <TabPanel key={tab.name} className="bg-white p-3 rounded-xl">
-            {tab.content}
-          </TabPanel>
+          <TabPanel key={tab.name}>{tab.content}</TabPanel>
         ))}
       </TabPanels>
-    </TabGroup>
+    </Tabs>
   );
 }
 
-Tabs.propTypes = {
+CustomTabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

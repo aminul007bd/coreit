@@ -1,92 +1,80 @@
-import { GlobeAltIcon, LinkIcon } from "@heroicons/react/20/solid";
-
-import { Link } from "react-router-dom";
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Link,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-        <div>
-          <h2 className="text-lg font-semibold mb-4">Company</h2>
-          <ul>
-            <li className="mb-2">
-              <Link to="/about" className="hover:underline">
-                About Us
+    <Box bg="gray.800" color="white" py={8}>
+      <Container maxW="container.xl">
+        <Flex
+          direction={{ base: "column", md: "row" }}
+          justify="space-between"
+          textAlign={{ base: "center", md: "left" }}
+        >
+          <Stack spacing={4}>
+            <Heading as="h2" size="md" mb={4}>
+              Company
+            </Heading>
+            <Link href="/about" _hover={{ textDecoration: "underline" }}>
+              About Us
+            </Link>
+            <Link href="/careers" _hover={{ textDecoration: "underline" }}>
+              Careers
+            </Link>
+            <Link href="/press" _hover={{ textDecoration: "underline" }}>
+              Press
+            </Link>
+          </Stack>
+          <Stack spacing={4}>
+            <Heading as="h2" size="md" mb={4}>
+              Support
+            </Heading>
+            <Link href="/contact" _hover={{ textDecoration: "underline" }}>
+              Contact Us
+            </Link>
+            <Link href="/faq" _hover={{ textDecoration: "underline" }}>
+              FAQ
+            </Link>
+            <Link href="/support" _hover={{ textDecoration: "underline" }}>
+              Support Center
+            </Link>
+          </Stack>
+          <Stack spacing={4} align={{ base: "center", md: "flex-end" }}>
+            <Flex justify="center" mb={4}>
+              <Link
+                href="mailto:info@company.com"
+                isExternal
+                mx={2}
+                _hover={{ color: "gray.400" }}
+              >
+                {/* <Icon as={EmailIcon} boxSize={6} /> */}
               </Link>
-            </li>
-            <li className="mb-2">
-              <Link to="/careers" className="hover:underline">
-                Careers
+              <Link
+                href="tel:+1234567890"
+                isExternal
+                mx={2}
+                _hover={{ color: "gray.400" }}
+              >
+                {/* <Icon as={PhoneIcon} boxSize={6} /> */}
               </Link>
-            </li>
-            <li className="mb-2">
-              <Link to="/press" className="hover:underline">
-                Press
+              <Link href="/about" mx={2} _hover={{ color: "gray.400" }}>
+                {/* <Icon as={InfoIcon} boxSize={6} /> */}
               </Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h2 className="text-lg font-semibold mb-4">Support</h2>
-          <ul>
-            <li className="mb-2">
-              <Link to="/contact" className="hover:underline">
-                Contact Us
-              </Link>
-            </li>
-            <li className="mb-2">
-              <Link to="/faq" className="hover:underline">
-                FAQ
-              </Link>
-            </li>
-            <li className="mb-2">
-              <Link to="/support" className="hover:underline">
-                Support Center
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="flex flex-col items-center md:items-end">
-          <div className="flex justify-center space-x-6 mb-4">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white"
-            >
-              <GlobeAltIcon className="h-6 w-6" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white"
-            >
-              <LinkIcon className="h-6 w-6" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white"
-            >
-              <GlobeAltIcon className="h-6 w-6" />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white"
-            >
-              <LinkIcon className="h-6 w-6" />
-            </a>
-          </div>
-          <p className="text-gray-400">
-            &copy; {new Date().getFullYear()} Your Company. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
+            </Flex>
+            <Text color="gray.400">
+              &copy; {new Date().getFullYear()} Your Company. All rights
+              reserved.
+            </Text>
+          </Stack>
+        </Flex>
+      </Container>
+    </Box>
   );
 };
 

@@ -1,77 +1,92 @@
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  SimpleGrid,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+
 const Home = () => {
   return (
-    <div className="bg-gray-100">
+    <Box bg="white" color="black">
       {/* Hero Section */}
-      <section className="bg-blue-600 text-white py-20">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Welcome to Our IT Company</h1>
-          <p className="text-lg mb-8">
+      <Box bg="blue.600" color="white" py={20}>
+        <Container maxW="container.xl" px={4}>
+          <Heading as="h1" size="2xl" mb={4}>
+            Welcome to Our IT Company
+          </Heading>
+          <Text fontSize="lg" mb={8}>
             We provide top-notch IT solutions to help your business thrive in
             the digital age.
-          </p>
-          <button className="bg-white text-blue-600 px-6 py-2 rounded hover:bg-gray-200">
+          </Text>
+          <Button
+            bg="white"
+            color="blue.600"
+            px={6}
+            py={2}
+            rounded="md"
+            _hover={{ bg: "gray.200" }}
+          >
             Learn More
-          </button>
-        </div>
-      </section>
+          </Button>
+        </Container>
+      </Box>
 
       {/* About Section */}
-      <section className="py-20">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">About Us</h2>
-          <p className="text-lg mb-8">
+      <Box py={20}>
+        <Container maxW="container.xl" px={4} py={4}>
+          <Heading as="h2" size="xl" mb={4}>
+            About Us
+          </Heading>
+          <Text fontSize="lg" mb={8}>
             Our company specializes in providing innovative IT solutions
             tailored to your business needs. With a team of experienced
             professionals, we ensure that your technology infrastructure is
             robust, secure, and efficient.
-          </p>
-        </div>
-      </section>
+          </Text>
+        </Container>
+      </Box>
 
       {/* Services Section */}
-      <section className="bg-gray-200 py-20">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded shadow">
-              <h3 className="text-xl font-bold mb-2">Web Development</h3>
-              <p>
+      <Box bg="gray.200" py={20}>
+        <Container maxW="container.xl" px={4}>
+          <Heading as="h2" size="xl" mb={4}>
+            Our Services
+          </Heading>
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
+            <Box bg="white" p={6} rounded="md" shadow="md" mx={2}>
+              <Heading as="h3" size="md" mb={2}>
+                Web Development
+              </Heading>
+              <Text>
                 We build responsive and scalable web applications to help your
                 business reach a wider audience.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded shadow">
-              <h3 className="text-xl font-bold mb-2">Cloud Solutions</h3>
-              <p>
-                Our cloud solutions ensure that your data is secure and
-                accessible from anywhere in the world.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded shadow">
-              <h3 className="text-xl font-bold mb-2">IT Consulting</h3>
-              <p>
-                We provide expert IT consulting services to help you make
-                informed decisions about your technology investments.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="py-20">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
-          <p className="text-lg mb-8">
-            Get in touch with us to learn more about how we can help your
-            business succeed.
-          </p>
-          <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
-            Contact Us
-          </button>
-        </div>
-      </section>
-    </div>
+              </Text>
+            </Box>
+            <Box bg="white" p={6} rounded="md" shadow="md" mx={2}>
+              <Heading as="h3" size="md" mb={2}>
+                Cloud Solutions
+              </Heading>
+              <Text>
+                We provide cloud solutions that ensure your business operations
+                are efficient and scalable.
+              </Text>
+            </Box>
+            <Box bg="white" p={6} rounded="md" shadow="md">
+              <Heading as="h3" size="md" mb={2}>
+                IT Consulting
+              </Heading>
+              <Text>
+                Our IT consulting services help you strategize and implement the
+                best technology solutions for your business.
+              </Text>
+            </Box>
+          </SimpleGrid>
+        </Container>
+      </Box>
+    </Box>
   );
 };
 

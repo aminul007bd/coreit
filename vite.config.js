@@ -1,5 +1,6 @@
+import { URL, fileURLToPath } from "url"; // Ensure URL is imported
+
 import { defineConfig } from "vite";
-import { fileURLToPath } from "url";
 import path from "path";
 import react from "@vitejs/plugin-react";
 
@@ -7,7 +8,9 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    "@": path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./src"),
+    alias: {
+      "@": path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./src"),
+    },
   },
   base: "/coreit/", // Ensure the base path is correctly set
 });

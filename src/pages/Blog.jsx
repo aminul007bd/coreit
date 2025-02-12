@@ -1,5 +1,15 @@
+import {
+  Alert,
+  Box,
+  Heading,
+  SimpleGrid,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
+
 import Card from "../components/common/Card";
-import { useQuery } from "react-query";
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
 
 const fetchBlogPosts = async () => {
   const response = await fetch(`http://localhost:3000/blogs`);
@@ -14,22 +24,26 @@ export default function Blog() {
     data: posts,
     error,
     isLoading,
-  } = useQuery("blogPosts", fetchBlogPosts);
+  } = useQuery(["blogPosts"], fetchBlogPosts);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading blog posts</div>;
+  if (isLoading) return <Spinner size="xl" />;
+  if (error) return <Alert status="error">Error loading blog posts</Alert>;
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Blog</h1>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <Box p={4}>
+      <Heading as="h1" size="xl" mb={4}>
+        Blog
+      </Heading>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
         {posts.map((post) => (
           <Card key={post.id}>
-            <h2 className="text-lg font-medium text-gray-900">{post.title}</h2>
-            <p className="mt-2 text-gray-600">{post.content}</p>
+            <Heading as="h2" size="md" mb={2}>
+              {post.title}
+            </Heading>
+            <Text>{post.content}</Text>
           </Card>
         ))}
-      </div>
-    </div>
+      </SimpleGrid>
+    </Box>
   );
 }

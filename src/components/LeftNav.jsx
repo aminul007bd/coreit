@@ -12,10 +12,11 @@ const LeftNav = () => {
   ];
 
   return (
-    <Box bg="gray.800" color="white" w="200px" p={4}>
+    <Box bg="white" color="black" w="200px" p={4}>
       <VStack align="start" spacing={4}>
         {menuItems.map((item, index) => (
           <Link
+            color={"gray.800"}
             key={index}
             as={RouterLink}
             to={item.props.to}

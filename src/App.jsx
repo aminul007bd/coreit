@@ -1,10 +1,4 @@
-import {
-  Box,
-  ChakraProvider,
-  Flex,
-  createSystem,
-  defaultConfig,
-} from "@chakra-ui/react";
+import { Box, ChakraProvider, Flex } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
@@ -23,19 +17,9 @@ import Register from "./pages/Register";
 import Service from "./pages/Service";
 import Users from "./pages/Users";
 import UsersRole from "./pages/UsersRole";
+import customTheme from "../theme";
 
 const queryClient = new QueryClient();
-
-export const customTheme = createSystem(defaultConfig, {
-  theme: {
-    tokens: {
-      fonts: {
-        heading: { value: `'Figtree', sans-serif` },
-        body: { value: `'Figtree', sans-serif` },
-      },
-    },
-  },
-});
 
 function App() {
   return (
@@ -43,7 +27,12 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <Router basename="/coreit">
-            <Flex direction="column" minH="100vh">
+            <Flex
+              direction="column"
+              minH="100vh"
+              maxW={{ xl: "1200px" }}
+              mx="auto"
+            >
               <HeaderWithoutNav />
               <Flex flex="1">
                 <LeftNav />

@@ -18,37 +18,38 @@ import UsersRole from "./pages/UsersRole";
 
 const AppRouter = () => {
   return (
-    <Router basename="coreit">
-    <Flex
-      direction="column"
-      minH="100vh"
-      maxW={{ xl: "1200px" }}
-      mx="auto"
-      bg={"gray.100"}
+    <Router
+      basename="coreit"
+      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
     >
-      <Header />
-      <Flex flex="1">
-      <Box flex="1">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/forget" element={<Forget />} />
-          <Route path="/job" element={<Job />} />
-          <Route path="/job/:id" element={<JobDetail />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/service" element={<Service />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/users/role" element={<UsersRole />} />
-        </Routes>
-      </Box>
-    </Flex>
-      <Footer />
-    </Flex>
-  </Router>
-
-    
+      <Flex
+        direction="column"
+        minH="100vh"
+        maxW={{ xl: "1200px" }}
+        mx="auto"
+        bg={"gray.100"}
+      >
+        <Header />
+        <Flex flex="1">
+          <Box flex="1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/forget" element={<Forget />} />
+              <Route path="/job" element={<Job />} />
+              <Route path="/job/:id" element={<JobDetail />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/service" element={<Service />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/users/role" element={<UsersRole />} />
+            </Routes>
+          </Box>
+        </Flex>
+        <Footer />
+      </Flex>
+    </Router>
   );
 };
 

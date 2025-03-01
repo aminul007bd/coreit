@@ -1,44 +1,39 @@
-import { FormControl, FormLabel, Select } from "@chakra-ui/react";
+import {
+  SelectContent,
+  SelectItem,
+  SelectLabel,
+  SelectRoot,
+  SelectTrigger,
+  SelectValueText,
+} from "@/components/ui/select";
+import { Stack, createListCollection } from "@chakra-ui/react";
 
 import PropTypes from "prop-types";
-import { useFormContext } from "react-hook-form";
-import { useState } from "react";
 
-export default function LabelWithSelect({ label, name, options }) {
-  const { setValue, watch } = useFormContext();
-  const selectedValue = watch(name);
-  const [selected, setSelected] = useState(
-    options.find((option) => option.value === selectedValue) || options[0]
-  );
-
-  const handleChange = (event) => {
-    const value = event.target.value;
-    const selectedOption = options.find((option) => option.value === value);
-    setSelected(selectedOption);
-    setValue(name, value);
-  };
+const LabelWithSelect = ({ label, options }) => {
+  const collection = createListCollection({ items: options });
 
   return (
-    <FormControl id={name} mb={4}>
-      <FormLabel>{label}</FormLabel>
-      <Select
-        value={selected.value}
-        onChange={handleChange}
-        placeholder="Select option"
-      >
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </Select>
-    </FormControl>
+    <Stack gap="5" width="320px">
+      <SelectRoot size="md" collection={collection}>
+        <SelectLabel>{label}</SelectLabel>
+        <SelectTrigger>
+          <SelectValueText placeholder="Select option" />
+        </SelectTrigger>
+        <SelectContent>
+          {collection.items.map((option) => (
+            <SelectItem item={option} key={option.value}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </SelectRoot>
+    </Stack>
   );
-}
+};
 
 LabelWithSelect.propTypes = {
   label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
@@ -46,3 +41,5 @@ LabelWithSelect.propTypes = {
     })
   ).isRequired,
 };
+
+export default LabelWithSelect;

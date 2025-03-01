@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 const LeftNav = () => {
   const menuItems = [
-    { label: "Home", props: { as: RouterLink, to: "/" } },
+    { label: "Home", props: { as: RouterLink, to: "/home" } },
     { label: "Blog", props: { as: RouterLink, to: "/blog" } },
     { label: "Contact", props: { as: RouterLink, to: "/contact" } },
     { label: "Job", props: { as: RouterLink, to: "/job" } },

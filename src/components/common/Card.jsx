@@ -3,13 +3,7 @@ import PropTypes from "prop-types";
 
 export default function Card({ children }) {
   return (
-    <Box
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      p={4}
-      boxShadow="sm"
-    >
+    <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p={4} s>
       {children}
     </Box>
   );

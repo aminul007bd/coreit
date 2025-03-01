@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <Box bg="green.500" color="white" py={8}>
+    <Box bg="blue.800" color="white" py={4}>
       <Container maxW="container.xl">
         <Flex
           direction={{ base: "column", md: "row" }}

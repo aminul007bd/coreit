@@ -12,5 +12,5 @@ export default defineConfig({
       "@": path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./src"),
     },
   },
-  base: "/coreit/", // Ensure the base path is correctly set
+  base: "/coreit", // Ensure the base path is correctly set
 });

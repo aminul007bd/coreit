@@ -5,7 +5,6 @@ import {
   Heading,
   SimpleGrid,
   Text,
-  VStack,
 } from "@chakra-ui/react";
 
 const Home = () => {
@@ -48,7 +47,6 @@ const Home = () => {
           </Text>
         </Container>
       </Box>
-
       {/* Services Section */}
       <Box bg="gray.200" py={20}>
         <Container maxW="container.xl" px={4}>

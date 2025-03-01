@@ -1,18 +1,15 @@
 import { Box, Button, Input, Stack, Text, VStack } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 
 const Login = () => {
-  const { login } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
     // Perform login logic
-    login({ username });
   };
 
   return (

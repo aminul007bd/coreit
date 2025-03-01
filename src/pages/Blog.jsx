@@ -8,7 +8,6 @@ import {
 } from "@chakra-ui/react";
 
 import Card from "../components/common/Card";
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchBlogPosts = async () => {
@@ -24,13 +23,16 @@ export default function Blog() {
     data: posts,
     error,
     isLoading,
-  } = useQuery(["blogPosts"], fetchBlogPosts);
+  } = useQuery({
+    queryKey: ["blogPosts"],
+    queryFn: fetchBlogPosts,
+  });
 
   if (isLoading) return <Spinner size="xl" />;
   if (error) return <Alert status="error">Error loading blog posts</Alert>;
 
   return (
-    <Box p={4}>
+    <Box p={4} color={"gray.800"}>
       <Heading as="h1" size="xl" mb={4}>
         Blog
       </Heading>

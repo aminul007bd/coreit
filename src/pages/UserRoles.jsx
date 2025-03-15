@@ -8,6 +8,9 @@ import {
 } from "@chakra-ui/react";
 import { Controller, useForm } from "react-hook-form";
 
+import baseUrl from "../config";
+import useGet from "@/hooks/useGet";
+import { useMemo } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -23,6 +26,23 @@ const UserRoles = () => {
   } = useForm({
     resolver: zodResolver(formSchema),
   });
+
+  const { data: userRoles, isLoading } = useGet({
+    endpoint: `${baseUrl}/userRole`,
+    queryKey: ["userRoles"],
+  });
+
+  console.log(userRoles, isLoading);
+
+  const frameworks = useMemo(() => {
+    if (!userRoles) return createListCollection({ items: [] });
+    return createListCollection({
+      items: userRoles.map((role) => ({
+        label: role.roleName,
+        value: role.id.toString(),
+      })),
+    });
+  }, [userRoles]);
 
   const onSubmit = handleSubmit((data) => console.log(data));
 
@@ -76,14 +96,5 @@ const UserRoles = () => {
     </form>
   );
 };
-
-const frameworks = createListCollection({
-  items: [
-    { label: "React.js", value: "react" },
-    { label: "Vue.js", value: "vue" },
-    { label: "Angular", value: "angular" },
-    { label: "Svelte", value: "svelte" },
-  ],
-});
 
 export default UserRoles;

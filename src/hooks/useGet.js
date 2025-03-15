@@ -1,11 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 
 const useGet = ({ endpoint, queryKey, options = {} }) => {
   const fetchData = async () => {
     const response = await fetch(endpoint, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
 
@@ -21,6 +21,6 @@ const useGet = ({ endpoint, queryKey, options = {} }) => {
     queryFn: fetchData,
     ...options,
   });
-}
+};
 
 export default useGet;

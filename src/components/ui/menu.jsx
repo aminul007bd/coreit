@@ -26,72 +26,68 @@ export const MenuArrow = React.forwardRef(function MenuArrow(props, ref) {
   );
 });
 
-export const MenuCheckboxItem = React.forwardRef(function MenuCheckboxItem(
-  props,
-  ref
-) {
-  return (
-    <ChakraMenu.CheckboxItem ps="8" ref={ref} {...props}>
-      <AbsoluteCenter axis="horizontal" insetStart="4" asChild>
-        <ChakraMenu.ItemIndicator>
-          <LuCheck />
-        </ChakraMenu.ItemIndicator>
-      </AbsoluteCenter>
-      {props.children}
-    </ChakraMenu.CheckboxItem>
-  );
-});
+export const MenuCheckboxItem = React.forwardRef(
+  function MenuCheckboxItem(props, ref) {
+    return (
+      <ChakraMenu.CheckboxItem ps="8" ref={ref} {...props}>
+        <AbsoluteCenter axis="horizontal" insetStart="4" asChild>
+          <ChakraMenu.ItemIndicator>
+            <LuCheck />
+          </ChakraMenu.ItemIndicator>
+        </AbsoluteCenter>
+        {props.children}
+      </ChakraMenu.CheckboxItem>
+    );
+  },
+);
 
-export const MenuRadioItem = React.forwardRef(function MenuRadioItem(
-  props,
-  ref
-) {
-  // eslint-disable-next-line react/prop-types
-  const { children, ...rest } = props;
-  return (
-    <ChakraMenu.RadioItem ps="8" ref={ref} {...rest}>
-      <AbsoluteCenter axis="horizontal" insetStart="4" asChild>
-        <ChakraMenu.ItemIndicator>
-          <LuCheck />
-        </ChakraMenu.ItemIndicator>
-      </AbsoluteCenter>
-      <ChakraMenu.ItemText>{children}</ChakraMenu.ItemText>
-    </ChakraMenu.RadioItem>
-  );
-});
+export const MenuRadioItem = React.forwardRef(
+  function MenuRadioItem(props, ref) {
+    // eslint-disable-next-line react/prop-types
+    const { children, ...rest } = props;
+    return (
+      <ChakraMenu.RadioItem ps="8" ref={ref} {...rest}>
+        <AbsoluteCenter axis="horizontal" insetStart="4" asChild>
+          <ChakraMenu.ItemIndicator>
+            <LuCheck />
+          </ChakraMenu.ItemIndicator>
+        </AbsoluteCenter>
+        <ChakraMenu.ItemText>{children}</ChakraMenu.ItemText>
+      </ChakraMenu.RadioItem>
+    );
+  },
+);
 
-export const MenuItemGroup = React.forwardRef(function MenuItemGroup(
-  props,
-  ref
-) {
-  // eslint-disable-next-line react/prop-types
-  const { title, children, ...rest } = props;
-  return (
-    <ChakraMenu.ItemGroup ref={ref} {...rest}>
-      {title && (
-        <ChakraMenu.ItemGroupLabel userSelect="none">
-          {title}
-        </ChakraMenu.ItemGroupLabel>
-      )}
-      {children}
-    </ChakraMenu.ItemGroup>
-  );
-});
+export const MenuItemGroup = React.forwardRef(
+  function MenuItemGroup(props, ref) {
+    // eslint-disable-next-line react/prop-types
+    const { title, children, ...rest } = props;
+    return (
+      <ChakraMenu.ItemGroup ref={ref} {...rest}>
+        {title && (
+          <ChakraMenu.ItemGroupLabel userSelect="none">
+            {title}
+          </ChakraMenu.ItemGroupLabel>
+        )}
+        {children}
+      </ChakraMenu.ItemGroup>
+    );
+  },
+);
 
-export const MenuTriggerItem = React.forwardRef(function MenuTriggerItem(
-  props,
-  ref
-) {
-  // eslint-disable-next-line react/prop-types
-  const { startIcon, children, ...rest } = props;
-  return (
-    <ChakraMenu.TriggerItem ref={ref} {...rest}>
-      {startIcon}
-      {children}
-      <LuChevronRight />
-    </ChakraMenu.TriggerItem>
-  );
-});
+export const MenuTriggerItem = React.forwardRef(
+  function MenuTriggerItem(props, ref) {
+    // eslint-disable-next-line react/prop-types
+    const { startIcon, children, ...rest } = props;
+    return (
+      <ChakraMenu.TriggerItem ref={ref} {...rest}>
+        {startIcon}
+        {children}
+        <LuChevronRight />
+      </ChakraMenu.TriggerItem>
+    );
+  },
+);
 
 export const MenuRadioItemGroup = ChakraMenu.RadioItemGroup;
 export const MenuContextTrigger = ChakraMenu.ContextTrigger;

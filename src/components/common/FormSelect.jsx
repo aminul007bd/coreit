@@ -24,13 +24,17 @@ const FormSelect = ({
 }) => {
   // Ensure collection is always an object with an items array
   const collection = Array.isArray(options)
-    ? { items: options.map((opt) => ({
-        label: opt.roleName, // Map API response to expected format
-        value: opt.id.toString(),
-      })) }
-    : (options && options.items ? options : { items: [] });
+    ? {
+        items: options.map((opt) => ({
+          label: opt.roleName, // Map API response to expected format
+          value: opt.id.toString(),
+        })),
+      }
+    : options && options.items
+      ? options
+      : { items: [] };
 
-  console.log('options', options);
+  console.log("options", options);
 
   return (
     <Field.Root invalid={!!error} width={width}>
@@ -43,14 +47,14 @@ const FormSelect = ({
             name={field.name}
             value={field.value}
             onValueChange={(val) => {
-                console.log("Selected value (before fix):", val);
-                
-                // Fix: Extract string value instead of an object
-                const selectedValue = Array.isArray(val) ? val[0] : val;
-      
-                console.log("Selected value (after fix):", selectedValue);
-                field.onChange(selectedValue);
-              }}
+              console.log("Selected value (before fix):", val);
+
+              // Fix: Extract string value instead of an object
+              const selectedValue = Array.isArray(val) ? val[0] : val;
+
+              console.log("Selected value (after fix):", selectedValue);
+              field.onChange(selectedValue);
+            }}
             onInteractOutside={() => field.onBlur()}
             collection={collection}
             {...selectProps}
@@ -59,14 +63,15 @@ const FormSelect = ({
               <SelectValueText placeholder={placeholder} />
             </SelectTrigger>
             <SelectContent>
-              {Array.isArray(collection.items) && collection.items.length > 0 ? (
+              {Array.isArray(collection.items) &&
+              collection.items.length > 0 ? (
                 collection.items.map((item) => (
                   <SelectItem key={item.value} item={item}>
                     {item.label}
                   </SelectItem>
                 ))
               ) : (
-                <div>No options available</div> 
+                <div>No options available</div>
               )}
             </SelectContent>
           </SelectRoot>

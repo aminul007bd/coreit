@@ -1,9 +1,4 @@
-import {
-  Box,
-  Container,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Container, Heading, Text } from "@chakra-ui/react";
 
 const Home = () => {
   return (

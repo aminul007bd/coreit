@@ -1,19 +1,23 @@
-import { URL, fileURLToPath } from "url"; // Ensure URL is imported
-
 import { defineConfig } from "vite";
+import eslintPlugin from "vite-plugin-eslint";
 import path from "path";
 import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    eslintPlugin({
+      cache: false,
+    }),
+  ],
   resolve: {
     alias: {
-      "@": path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./src"),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/coreit", // Ensure the base path is correctly set
+  base: "/coreit",
   server: {
-    port: 3000, // Set the port to 3000
+    port: 3000,
   },
 });

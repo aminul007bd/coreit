@@ -13,8 +13,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { BrowserRouter as Router } from "react-router-dom";
 import Service from "./pages/Service";
+import UserRoles from "./pages/UserRoles";
 import Users from "./pages/Users";
-import UsersRole from "./pages/UsersRole";
 
 const AppRouter = () => {
   return (
@@ -43,7 +43,7 @@ const AppRouter = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/service" element={<Service />} />
               <Route path="/users" element={<Users />} />
-              <Route path="/users/role" element={<UsersRole />} />
+              <Route path="/users/role" element={<UserRoles />} />
             </Routes>
           </Box>
         </Flex>

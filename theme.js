@@ -1,4 +1,4 @@
-import { createSystem, defaultConfig } from '@chakra-ui/react';
+import { createSystem, defaultConfig } from "@chakra-ui/react";
 
 export const customTheme = createSystem(defaultConfig, {
   theme: {
@@ -9,9 +9,9 @@ export const customTheme = createSystem(defaultConfig, {
       },
       styles: {
         global: {
-          'html, body': {
-            backgroundColor: 'white',
-            color: 'black',
+          "html, body": {
+            backgroundColor: "white",
+            color: "black",
           },
         },
       },

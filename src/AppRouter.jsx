@@ -27,11 +27,11 @@ const AppRouter = () => {
         minH="100vh"
         maxW={{ xl: "1200px" }}
         mx="auto"
-        bg={"gray.100"}
+        bg={"white"}
       >
         <Header />
         <Flex flex="1">
-          <Box flex="1">
+          <Box flex="1" p={4} color={"gray.950"}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/blog" element={<Blog />} />

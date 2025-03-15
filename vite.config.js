@@ -13,4 +13,7 @@ export default defineConfig({
     },
   },
   base: "/coreit", // Ensure the base path is correctly set
+  server: {
+    port: 3000, // Set the port to 3000
+  },
 });

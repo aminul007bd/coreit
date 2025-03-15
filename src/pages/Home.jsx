@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <Box bg="white" color="black">
       {/* Hero Section */}
-      <Box bg="blue.600" color="white" py={20}>
+      <Box bg="gray.500" color="white" py={20} rounded={5}>
         <Container maxW="container.xl" px={4}>
           <Heading as="h1" size="2xl" mb={4}>
             Welcome to Our IT Company

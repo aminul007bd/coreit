@@ -1,10 +1,12 @@
-import { Box, Flex, Link } from "@chakra-ui/react";
+import { Box, Flex, Image, Link } from "@chakra-ui/react";
 
 import { Link as RouterLink } from "react-router-dom";
 
+// import logo from "../../../public/coreIt.png";
+
 const Header = () => {
   return (
-    <Box bg="blue.800" color="white" py={4}>
+    <Box bg="teal.700" py={4}>
       <Flex
         maxW="container.xl"
         mx="auto"
@@ -12,6 +14,7 @@ const Header = () => {
         align="center"
       >
         <Flex padding="2" marginLeft={4}>
+          {/* <Image src={logo} alt="Core IT" height="150px" /> */}
           <Box align="start">
             <Link
               as={RouterLink}

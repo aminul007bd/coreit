@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 "use client";
 
 import * as React from "react";
@@ -7,7 +6,6 @@ import { AbsoluteCenter, Menu as ChakraMenu, Portal } from "@chakra-ui/react";
 import { LuCheck, LuChevronRight } from "react-icons/lu";
 
 export const MenuContent = React.forwardRef(function MenuContent(props, ref) {
-  // eslint-disable-next-line react/prop-types
   const { portalled = true, portalRef, ...rest } = props;
   return (
     <Portal disabled={!portalled} container={portalRef}>
@@ -43,7 +41,6 @@ export const MenuCheckboxItem = React.forwardRef(
 
 export const MenuRadioItem = React.forwardRef(
   function MenuRadioItem(props, ref) {
-    // eslint-disable-next-line react/prop-types
     const { children, ...rest } = props;
     return (
       <ChakraMenu.RadioItem ps="8" ref={ref} {...rest}>
@@ -60,7 +57,6 @@ export const MenuRadioItem = React.forwardRef(
 
 export const MenuItemGroup = React.forwardRef(
   function MenuItemGroup(props, ref) {
-    // eslint-disable-next-line react/prop-types
     const { title, children, ...rest } = props;
     return (
       <ChakraMenu.ItemGroup ref={ref} {...rest}>
@@ -77,7 +73,6 @@ export const MenuItemGroup = React.forwardRef(
 
 export const MenuTriggerItem = React.forwardRef(
   function MenuTriggerItem(props, ref) {
-    // eslint-disable-next-line react/prop-types
     const { startIcon, children, ...rest } = props;
     return (
       <ChakraMenu.TriggerItem ref={ref} {...rest}>

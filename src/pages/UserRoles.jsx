@@ -9,7 +9,7 @@ import {
 import { Controller, useForm } from "react-hook-form";
 
 import baseUrl from "../config";
-import useGet from "@/hooks/useGet";
+import { useGet } from "../hooks/useGet";
 import { useMemo } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -27,22 +27,26 @@ const UserRoles = () => {
     resolver: zodResolver(formSchema),
   });
 
-  const { data: userRoles, isLoading } = useGet({
+  const { data, isLoading } = useGet({
     endpoint: `${baseUrl}/userRole`,
     queryKey: ["userRoles"],
   });
 
-  console.log(userRoles, isLoading);
+  // console.log(data);
 
   const frameworks = useMemo(() => {
-    if (!userRoles) return createListCollection({ items: [] });
+    if (!data || !Array.isArray(data)) {
+      return createListCollection({ items: [] });
+    }
     return createListCollection({
-      items: userRoles.map((role) => ({
+      items: data.map((role) => ({
         label: role.roleName,
         value: role.id.toString(),
       })),
     });
-  }, [userRoles]);
+  }, [data]);
+
+  console.log(frameworks, data);
 
   const onSubmit = handleSubmit((data) => console.log(data));
 
@@ -65,7 +69,7 @@ const UserRoles = () => {
                 <Select.HiddenSelect />
                 <Select.Control>
                   <Select.Trigger>
-                    <Select.ValueText placeholder="Select framework" />
+                    <Select.ValueText placeholder="Select User Role" />
                   </Select.Trigger>
                   <Select.IndicatorGroup>
                     <Select.Indicator />
@@ -89,7 +93,7 @@ const UserRoles = () => {
           <Field.ErrorText>{errors.framework?.message}</Field.ErrorText>
         </Field.Root>
 
-        <Button size="sm" type="submit">
+        <Button size="sm" type="submit" colorPalette="teal">
           Submit
         </Button>
       </Stack>

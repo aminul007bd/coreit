@@ -1,8 +1,6 @@
 import globals from "globals";
 import importPlugin from "eslint-plugin-import";
 import js from "@eslint/js";
-import prettier from "eslint-plugin-prettier";
-import prettierConfig from "eslint-config-prettier";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
@@ -28,7 +26,6 @@ export default [
       "react-refresh": reactRefresh,
       import: importPlugin,
       "unused-imports": unusedImports,
-      prettier: prettier,
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -40,8 +37,17 @@ export default [
         "warn",
         { allowConstantExport: true },
       ],
-      "import/order": "off", // Turn off import order rule
-      "react/prop-types": "off", // Turn off prop-types validation rule
+      "react/jsx-uses-react": "off", // Turn off the rule for using React in JSX
+      "react/react-in-jsx-scope": "off", // Turn off the rule for React in scope
+      "react/prop-types": "off", // Turn off the rule for prop-types
+      "import/order": [
+        "error",
+        {
+          groups: [["builtin", "external", "internal"]],
+          "newlines-between": "always",
+          alphabetize: { order: "asc", caseInsensitive: true },
+        },
+      ],
       "unused-imports/no-unused-imports": "error",
       "unused-imports/no-unused-vars": [
         "warn",
@@ -52,8 +58,6 @@ export default [
           argsIgnorePattern: "^_",
         },
       ],
-      "prettier/prettier": "error",
     },
   },
-  prettierConfig,
 ];

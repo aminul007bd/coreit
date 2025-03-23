@@ -1,6 +1,5 @@
 import * as React from "react";
 
-/* eslint-disable react/prop-types */
 import { Checkbox as ChakraCheckbox } from "@chakra-ui/react";
 
 export const Checkbox = React.forwardRef(function Checkbox(props, ref) {

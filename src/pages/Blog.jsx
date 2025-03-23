@@ -8,24 +8,17 @@ import {
 } from "@chakra-ui/react";
 
 import Card from "../components/common/Card";
-import { useQuery } from "@tanstack/react-query";
-
-const fetchBlogPosts = async () => {
-  const response = await fetch(`http://localhost:8080/blogs`);
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-  return response.json();
-};
+import baseUrl from "../config";
+import { useGet } from "../hooks/useGet"; // Import the useGet hook
 
 export default function Blog() {
   const {
     data: posts,
     error,
     isLoading,
-  } = useQuery({
+  } = useGet({
+    url: `${baseUrl}/blogs`,
     queryKey: ["blogPosts"],
-    queryFn: fetchBlogPosts,
   });
 
   if (isLoading) return <Spinner size="xl" />;

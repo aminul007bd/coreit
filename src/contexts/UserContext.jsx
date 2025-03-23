@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import { createContext, useMemo } from "react";
 
-import useGet from "../hooks/useGet";
+import { useGet } from "../hooks/useGet";
 
 const UserContext = createContext();
 

@@ -8,7 +8,7 @@ import {
 
 const DataTable = ({ title, columns, items, pageSize }) => {
   return (
-    <Stack width="full" gap="5">
+    <>
       <Heading size="xl">{title}</Heading>
       <Table.Root variant="outline" showColumnBorder>
         <Table.Header>
@@ -16,8 +16,8 @@ const DataTable = ({ title, columns, items, pageSize }) => {
             {columns.map((col, index) => (
               <Table.ColumnHeader
                 // whiteSpace="nowrap"
-                fontSize=".75rem"
-                color="blue.700"
+                bg="white"
+                color="black"
                 key={index}
                 textAlign={col.align || "start"}
               >
@@ -27,11 +27,13 @@ const DataTable = ({ title, columns, items, pageSize }) => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {items.map((item) => (
+          {items?.map((item) => (
             <Table.Row key={item.id} fontSize=".75rem">
               {columns.map((col, index) => (
                 <Table.Cell key={index} textAlign={col.align || "start"}>
-                  {item[col.key]}
+                  {col.Cell
+                    ? col.Cell({ value: item[col.key] })
+                    : item[col.key]}
                 </Table.Cell>
               ))}
             </Table.Row>
@@ -39,14 +41,14 @@ const DataTable = ({ title, columns, items, pageSize }) => {
         </Table.Body>
       </Table.Root>
 
-      {/* <PaginationRoot count={items.length} pageSize={pageSize} page={1}>
-        <HStack wrap="wrap">
-          <PaginationPrevTrigger />
-          <PaginationItems />
-          <PaginationNextTrigger />
+      <PaginationRoot count={items.length} pageSize={pageSize} page={1}>
+        <HStack wrap="wrap" color={"gray.800"} mt={4}>
+          <PaginationPrevTrigger color="black" />
+          <PaginationItems color="black" />
+          <PaginationNextTrigger color="black" />
         </HStack>
-      </PaginationRoot> */}
-    </Stack>
+      </PaginationRoot>
+    </>
   );
 };
 

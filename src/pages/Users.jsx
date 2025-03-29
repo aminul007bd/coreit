@@ -1,6 +1,7 @@
 import { Alert, Button, Spinner, Stack, Text, VStack } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 
+import DataTable from "../components/common/DataTable";
 import SelectField from "../components/common/SelectField";
 import baseUrl from "../config";
 import config from "../config";
@@ -28,6 +29,50 @@ const Users = () => {
     url: `${baseUrl}/userRole`,
     queryKey: ["userRoles"],
   });
+
+  const {
+    data: users,
+    isUserError,
+    isUserLoading,
+  } = useGet({
+    url: `${baseUrl}/users`,
+    queryKey: ["users"],
+  });
+
+  const userColumns = [
+    {
+      label: "ID",
+      key: "id", // Matches the "id" field in the data
+    },
+    {
+      label: "First Name",
+      key: "firstName", // Matches the "firstName" field in the data
+    },
+    {
+      label: "Last Name",
+      key: "lastName", // Matches the "lastName" field in the data
+    },
+    {
+      label: "Email",
+      key: "email", // Matches the "email" field in the data
+    },
+    {
+      label: "Role Name",
+      key: "roleId", // Matches the "roleId" field in the data
+      Cell: ({ value }) => {
+        const role = userRoles?.find((role) => role.id === value);
+        return role ? role.roleName : "Unknown Role";
+      },
+    },
+    {
+      label: "Created At",
+      key: "createdAt", // Matches the "createdAt" field in the data
+      align: "center", // Optional alignment
+      Cell: ({ value }) => new Date(value).toLocaleString(),
+    },
+  ];
+
+  console.log("Users data:", users);
 
   // Transform userRoles into { value, label } format
   const transformedUserRoles =
@@ -70,6 +115,16 @@ const Users = () => {
 
   return (
     <>
+      {users?.length === 0 ? (
+        <Text>No users found.</Text>
+      ) : (
+        <DataTable
+          title="Users"
+          columns={userColumns}
+          items={users || []}
+          pageSize={10} // Optional: Set page size for pagination
+        />
+      )}
       <Stack align={"start"}>
         <form onSubmit={onSubmit}>
           <VStack gap="4" align="flex-start" marginTop={4}>
